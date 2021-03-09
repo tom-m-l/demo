@@ -1,1 +1,2 @@
 # demo
+## "main": "index.js",
