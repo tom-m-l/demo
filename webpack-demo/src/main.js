@@ -1,4 +1,4 @@
-// index js
+// main js
 import _ from 'lodash';
 
 function component() {
@@ -6,6 +6,7 @@ function component() {
 
     // lodash
     element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+    element.classList.add('hello');
 
     return element;
 }
