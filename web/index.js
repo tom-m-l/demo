@@ -1,9 +1,12 @@
 // js
+const gamels = this.gameItem.querySelectorAll('li');
 
-// $('#box')
+gamels[this.num].className = '';
 
-const adiv = document.createElement('div');
+this.num++;
 
-$('#box').append(adiv);
+if (this.num > gamels.length - 1) {
+    this.num = 0;
+}
 
-adiv.innerHTML = '<img src="https://content.flash.cn/images/fc_supplan_stepbg1.png" alt="" srcset="">';
+gamels[this.num].className = 'cur';
