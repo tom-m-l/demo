@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.demo-wrap {
+    font-size: 14px;
+    color: #fff;
+    background-color: #999;
+}
+
+.title {
+    font-size: 24px;
+    line-height: 2;
+    text-align: center;
+}
+
+.inner {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.go {
+    width: 120px;
+    height: 42px;
+    background-color: #f0dd36;
+}
+
+.qrcode {
+    width: 100px;
+    height: 100px;
+    background-color: #a7a7a7;
+    position: fixed;
+    top: 50%;
+    left: 10px;
+}
