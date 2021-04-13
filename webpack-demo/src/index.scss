@@ -34,3 +34,26 @@
     top: 50%;
     left: 10px;
 }
+
+.hiddenQRcode {
+    animation: hiddenQrcode 1.3s ease forwards;
+}
+
+@keyframes hiddenQrcode {
+    0% {
+        top: 50%;
+        left: 10px;
+    }
+
+    50% {
+        top: 48px + 42px;
+        left: 360px;
+        opacity: 1;
+    }
+
+    100% {
+        top: 0;
+        left: 360px;
+        opacity: 0;
+    }
+}
