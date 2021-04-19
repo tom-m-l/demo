@@ -1,4 +1,5 @@
 import './index.scss';
+var $ = require("jquery");
 
 const go = document.querySelector('.go') as HTMLElement;
 const qrcode = document.querySelector('.qrcode') as HTMLElement;
@@ -8,6 +9,7 @@ const toX = go.offsetLeft;
 
 qrcode.onclick = (e) => {
     console.log('e');
+    $('.qrcode').animate({ top: toY, left: toX },300);
 };
 
 
@@ -17,36 +19,35 @@ function getStyleAttr(element: any, attr: any) {
 }
 
 //封装的动画函数
-function autoAnimate(element: any, json: any, fn: any) {
-    let flag = true;
-    //清除定时器
+function autoAnimate(element: any, json: any, fn?: any) {
+
+    // 清除定时器
     clearInterval(element.tmId);
     element.tmId = setInterval(function () {
+        // 节流
+        let flag = true;
         for (var attr in json) {
-            //获取操作的css属性
+            // 获取操作的css属性
             let current = parseInt(getStyleAttr(element, attr));
-            //步数
-            const step = 10;
-            //步长(每一步运动的像素)
+            // 步数
+            const step = 50;
+            // 步长(每一步运动的像素)
             let speed = (json[attr] - current) / step;
-            //判断左右移动
+            // 判断左右移动
             speed = json[attr] > current ? Math.ceil(speed) : Math.floor(speed);
-            //每一步运动的位置
+            // 每一步运动的位置
             current += speed;
-            //开始运动
+            // 开始运动
             element.style[attr] = current + "px";
             if (current != json[attr]) {
-                console.log(current, json[attr]);
                 flag = false;
             }
-            // console.log("步长"+speed,"当前位置"+current,"目标"+json[attr]);
         }
-        console.log("--------------------");
         if (flag) {
             clearInterval(element.tmId);
             if (fn) fn();
         }
-    }, 200);
+    }, 3);
 }
 
 
