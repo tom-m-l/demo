@@ -7536,6 +7536,11 @@ function propFilter( props, specialEasing ) {
 }
 
 function Animation( elem, properties, options ) {
+	console.log('Animation-start');
+	console.log(elem);
+	console.log(properties);
+	console.log(options);
+	console.log('------------------Animation()');
 	var result,
 		stopped,
 		index = 0,
@@ -7546,6 +7551,7 @@ function Animation( elem, properties, options ) {
 			delete tick.elem;
 		} ),
 		tick = function() {
+			console.log('tick-start');
 			if ( stopped ) {
 				return false;
 			}
@@ -7559,6 +7565,12 @@ function Animation( elem, properties, options ) {
 				index = 0,
 				length = animation.tweens.length;
 
+				console.log('currentTime',currentTime);
+				console.log('remaining',remaining);
+				console.log('temp',temp);
+				console.log('percent',percent);
+				console.log('index',index);
+				console.log('length',length);
 			for ( ; index < length; index++ ) {
 				animation.tweens[ index ].run( percent );
 			}
@@ -7577,6 +7589,7 @@ function Animation( elem, properties, options ) {
 
 			// Resolve the animation and report its conclusion
 			deferred.resolveWith( elem, [ animation ] );
+			console.log('tick-end');
 			return false;
 		},
 		animation = deferred.promise( {
@@ -7592,12 +7605,14 @@ function Animation( elem, properties, options ) {
 			duration: options.duration,
 			tweens: [],
 			createTween: function( prop, end ) {
+				console.log('createTween-start');
 				var tween = jQuery.Tween( elem, animation.opts, prop, end,
 					animation.opts.specialEasing[ prop ] || animation.opts.easing );
 				animation.tweens.push( tween );
 				return tween;
 			},
 			stop: function( gotoEnd ) {
+				console.log('stop-start');
 				var index = 0,
 
 					// If we are going to the end, we want to run all the tweens
@@ -7608,7 +7623,6 @@ function Animation( elem, properties, options ) {
 				}
 				stopped = true;
 				for ( ; index < length; index++ ) {
-					console.log('ddd',index);
 					animation.tweens[ index ].run( 1 );
 				}
 
@@ -7657,6 +7671,8 @@ function Animation( elem, properties, options ) {
 			queue: animation.opts.queue
 		} )
 	);
+	
+	console.log('animation-end');
 
 	return animation;
 }
@@ -7755,7 +7771,6 @@ jQuery.fn.extend( {
 			.end().animate( { opacity: to }, speed, easing, callback );
 	},
 	animate: function( prop, speed, easing, callback ) {
-		console.log(prop);
 		var empty = jQuery.isEmptyObject( prop ),
 			optall = jQuery.speed( speed, easing, callback ),
 			doAnimation = function() {

@@ -36,21 +36,63 @@ li {
 
 .qrcode {
     width: 100px;
-    height: 100px;
+    $height: 100px;
+    height: $height;
     background-color: #a7a7a7;
     position: fixed;
     top: 50%;
     right: 10px;
+    margin-top: -$height/2;
 }
 
 .hiddenQRcode {
-    animation: hiddenQrcode 1.3s ease forwards;
+    animation: backOutUp 1s ease both;
+}
+
+.animate__animated {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+@keyframes backOutUp {
+    0% {
+        // animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    50% {
+        transform: translate(-350px, -245px) scale(1);
+        opacity: 1;
+    }
+
+    55% {
+        transform: translate(-350px, -245px) scale(0.7);
+        opacity: 0.7;
+    }
+
+    100% {
+        transform: translate(-350px, -900px) scale(0.7);
+        opacity: 0;
+    }
+
+    // 0% {
+    //     transform: scale(1);
+    //     opacity: 1;
+    // }
+
+    // 20% {
+    //     transform: translateY(0px) scale(0.7);
+    //     opacity: 0.7;
+    // }
+
+    // 100% {
+    //     transform: translateY(-700px) scale(0.7);
+    //     opacity: 0.7;
+    // }
 }
 
 @keyframes hiddenQrcode {
-    0% {
-        top: 50%;
-        right: 10px;
+    100% {
+        animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
     }
 
     50% {
@@ -60,7 +102,8 @@ li {
     }
 
     100% {
-        top: 0;
+        top: -200px;
         right: 360px;
+        opacity: 0;
     }
 }

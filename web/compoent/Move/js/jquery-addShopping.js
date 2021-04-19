@@ -36,13 +36,13 @@
 						var $obj = $('#cartIcon');
 						if (!$obj.is(':animated')) {
 							$obj.css({ 'left': x, 'top': y }).animate({ 'left': X, 'top': Y + 70 }, 500, function () {
-								$obj.stop(false, false).animate({ 'top': Y - 20, 'opacity': 0 }, 500, function () {
-									$obj.fadeOut(300, function () {
-										$obj.remove();
-										$target.data('click', false);
-										$options.endFunction($(this));
-									});
-								});
+								// $obj.stop(false, false).animate({ 'top': Y - 20, 'opacity': 0 }, 500, function () {
+								// 	$obj.fadeOut(300, function () {
+								// 		$obj.remove();
+								// 		$target.data('click', false);
+								// 		$options.endFunction($(this));
+								// 	});
+								// });
 							});
 						};
 					}
