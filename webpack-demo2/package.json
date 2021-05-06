@@ -1,7 +1,7 @@
 {
   "name": "webpack-demo2",
   "version": "1.0.0",
-  "description": "",
+  "description": "web",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -13,6 +13,7 @@
     "autoprefixer": "^10.2.5",
     "clean-webpack-plugin": "^4.0.0-alpha.0",
     "css-loader": "^5.2.4",
+    "css-minimizer-webpack-plugin": "^2.0.0",
     "file-loader": "^6.2.0",
     "html-loader": "^2.1.2",
     "node-sass": "^5.0.0",
