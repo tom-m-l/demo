@@ -1,11 +1,20 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
+// const HtmlWebpackInlineSourcePlugin = require('./html-webpack-inline-source-plugin');
+// const es3ifyPlugin = require('es3ify-webpack-plugin');
+// const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+// const HtmlWebpackInjector = require('html-webpack-injector');
 
 module.exports = {
-    entry: './src/index.ts',
+    entry: {
+        index: './src/js/index.ts',
+        login: './src/js/my/login.ts'
+    },
     output: {
-        filename: '[name].[contenthash].js',
+        filename: '[name].js',
         path: path.resolve(__dirname, '../dist'),
         clean: true,
     },
@@ -13,6 +22,20 @@ module.exports = {
         new HtmlWebpackPlugin({
             filename: 'index.html',
             template: 'src/index.html',
+            chunks: ['index'],
+            minify: {
+                collapseWhitespace: true,
+                removeComments: true
+            }
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'login.html',
+            template: 'src/login.html',
+            chunks: ['login'],
+            minify: {
+                collapseWhitespace: true,
+                removeComments: true
+            }
         }),
         new CleanWebpackPlugin()
     ],
@@ -28,11 +51,7 @@ module.exports = {
             },
             {
                 test: /\.s[ac]ss$/i,
-                use: ["style-loader", "css-loader", "sass-loader"],
-            },
-            {
-                test: /\.css$/i,
-                use: ["style-loader", "css-loader"],
+                use: ['style-loader', "css-loader", "sass-loader"],
             },
             {
                 test: /\.(png|svg|jpg|jpeg|gif)$/i,

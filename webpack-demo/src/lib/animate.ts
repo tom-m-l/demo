@@ -1,19 +1,64 @@
-import './index.scss';
-var $ = require("jquery");
+// animate js
 
-const go = document.querySelector('.go') as HTMLElement;
-const qrcode = document.querySelector('.qrcode') as HTMLElement;
-const toY = go.offsetHeight + qrcode.offsetHeight / 2;
-const toX = go.offsetLeft;
-// console.log(toX, toY);
-
-qrcode.onclick = (e) => {
-    console.log('e');
-    $('.qrcode').animate({ top: toY, left: toX },300);
-};
+console.log('animate');
 
 
-//获取任意css属性值
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* //获取任意css属性值
 function getStyleAttr(element: any, attr: any) {
     return window.getComputedStyle ? window.getComputedStyle(element, null)[attr] : element.currentStyle[attr];
 }
@@ -48,12 +93,7 @@ function autoAnimate(element: any, json: any, fn?: any) {
             if (fn) fn();
         }
     }, 3);
-}
-
-
-
-
-
+} */
 
 
 
@@ -112,13 +152,6 @@ function autoAnimate(element: any, json: any, fn?: any) {
 
 
 
-
-
-
-
-
-
-
 // qrcode.animate([
 //     { top: '50%', left: '10px' },
 //     { top: toY + 40 + 'px', left: toX + 'px' },
@@ -127,8 +160,6 @@ function autoAnimate(element: any, json: any, fn?: any) {
 //     duration: 1000,
 //     fill: 'forwards',
 // });
-
-
 
 
 
@@ -189,7 +220,6 @@ function autoAnimate(element: any, json: any, fn?: any) {
 
 
 
-
 // function animate1(ele: any, target: any, callback?: () => void) {
 //     clearInterval(ele.timer);
 //     ele.timer = setInterval(function () {
@@ -202,7 +232,6 @@ function autoAnimate(element: any, json: any, fn?: any) {
 //         }
 //     }, 15);
 // }
-
 
 
 
@@ -251,7 +280,6 @@ function autoAnimate(element: any, json: any, fn?: any) {
 //         }
 //     }, 25)
 // }
-
 
 
 
