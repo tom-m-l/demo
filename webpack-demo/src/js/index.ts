@@ -1,0 +1,2 @@
+// js
+console.log('index');
